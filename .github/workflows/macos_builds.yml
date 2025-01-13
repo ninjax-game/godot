@@ -10,7 +10,7 @@ env:
 
 jobs:
   build-macos:
-    runs-on: macos-latest
+    runs-on: mac_runner
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
