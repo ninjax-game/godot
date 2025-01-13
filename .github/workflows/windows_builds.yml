@@ -36,8 +36,8 @@ jobs:
             target: template_release
             tests: true
             sconsflags: debug_symbols=no module_mono_enabled=yes
-            bin: ./bin/windows_release_x86_64_console.exe
-            build-mono: false
+            bin: ./bin/godot.windows.template_release.x86_64.console.exe
+            build-mono: true
             compiler: msvc
             cache-limit: 2
 
