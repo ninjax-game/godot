@@ -6,7 +6,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  
+
   # First stage: Run static checks on all platforms.
   android-build:
     if: false
@@ -24,7 +24,6 @@ jobs:
     uses: ./.github/workflows/linux_builds.yml
 
   macos-build:
-    if: false
     name: 🍎 macOS
     uses: ./.github/workflows/macos_builds.yml
 

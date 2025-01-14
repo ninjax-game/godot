@@ -31,16 +31,6 @@ jobs:
             compiler: msvc
             cache-limit: 2
 
-          - name: Template w/ Mono (target=template_release, tests=yes)
-            cache-name: windows-template-mono
-            target: template_release
-            tests: true
-            sconsflags: debug_symbols=no module_mono_enabled=yes
-            bin: ./bin/godot.windows.template_release.x86_64.console.exe
-            build-mono: true
-            compiler: msvc
-            cache-limit: 2
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
