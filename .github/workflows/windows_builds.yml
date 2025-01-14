@@ -13,8 +13,8 @@ env:
 
 jobs:
   build-windows:
-    # Windows 10 with latest image
     runs-on: win_runner
+
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
@@ -110,3 +110,24 @@ jobs:
           ${{ matrix.bin }} --version
           ${{ matrix.bin }} --help
           ${{ matrix.bin }} --test --force-colors
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ matrix.bin }}
+          asset_name: ${{ matrix.bin }}
+          asset_content_type: application/octet-stream
